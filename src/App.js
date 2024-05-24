@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom'
-import Homepage from './Pages/Homepage';
+import HomePage from './Pages/HomePage';
 import NotFound from './Components/layout/NotFound/NotFound';
 import LoginPage from './Pages/LoginPage';
 import UserDetailsPage from './Pages/UserDetailsPage';
@@ -18,7 +18,7 @@ function App() {
     [
       {
         path: '/',
-        element: <Homepage />
+        element: <HomePage />
       },
       {
         path: '*',

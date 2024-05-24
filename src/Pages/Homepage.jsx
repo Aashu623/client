@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Loader from "../Components/layout/Loader/Loader";
 import { Link } from "react-router-dom";
 
-function Homepage() {
+function HomePage() {
   const { loading } = useSelector((state) => state.user);
   return (
     <>
@@ -26,4 +26,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default HomePage;
