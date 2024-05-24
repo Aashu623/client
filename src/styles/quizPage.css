@@ -1,0 +1,69 @@
+.quiz-container {
+  display: flex;
+  padding: 2rem;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.timer {
+  position: absolute;
+  right: 2rem;
+  font-size: 2rem;
+}
+.question-container {
+  margin-top: 3rem;
+  min-width: 50vw;
+  min-height: 30vw;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+.question {
+  color: rgb(8, 8, 151);
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.options {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+.options > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.options > div > span {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.optionButton {
+  max-width: fit-content;
+  color: black;
+  transition: ease-in-out 0.3s;
+}
+.optionButton:hover {
+  background-color: green;
+  color: white;
+}
+
+.optionButton:active {
+  background-color: blue;
+  color: white;
+}
+
+.optionButton.selected {
+  background-color: blue;
+  color: white;
+}
+
+.navigation-buttons {
+  width: 60vw;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
