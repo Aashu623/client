@@ -3,14 +3,16 @@ import "../styles/registerPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import Loader from "../Components/layout/Loader/Loader";
-import { clearErrors, register } from "../actions/userAction";
+import {register } from "../actions/userAction";
+import MetaData from "../Components/layout/MetaData";
+import CopyrightIcon from '@mui/icons-material/Copyright';
 
 
 function RegisterPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, isAuthenticated, error } = useSelector(
+  const { loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
 
@@ -39,14 +41,12 @@ function RegisterPage() {
     if (isAuthenticated) {
       navigate("/me");
     }
-    if (error) {
-      alert(error);
-      dispatch(clearErrors());
-    }
   });
 
   return (
     <>
+      <MetaData title="Register | Code Fusion" />
+
       {loading ? (
         <Loader />
       ) : (
@@ -103,16 +103,20 @@ function RegisterPage() {
                 <option value="BCA AIDA B">BCA AIDA B</option>
                 <option value="BCA AIDA C">BCA AIDA C</option>
                 <option value="BCA AIDA D">BCA AIDA D</option>
+                <option value="BCA AIDA D">MCA</option>
               </select>
             </div>
 
-            <input type="submit" className="button-1"/>
+            <input type="submit" className="button-1" />
             <span>
               Already registered? <Link to="/login">Login here</Link>{" "}
             </span>
           </form>
         </div>
       )}
+      <div className="footer">
+        <CopyrightIcon /> developed by <Link to={"https://aashu623.github.io/Portfolio/"} target="blank">Aashish kushwah</Link>
+      </div>
     </>
   );
 }

@@ -1,23 +1,35 @@
 .banner {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-  }
-  .homeHeading {
-    font-size: 5rem;
-    font-style: oblique;
-    color: rgb(251, 202, 202);
-  }
-  .loginButton {
-    font-size: 2rem;
-    font-weight: 600;
-    font-style: oblique;
-    text-decoration: none;
-    padding: 0.5rem 2rem;
-  }
-  
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.homeHeading {
+  font-size: 5rem;
+  font-style: oblique;
+  color: rgb(251, 202, 202);
+}
+
+.loginButton {
+  font-size: 2rem;
+  font-weight: 600;
+  font-style: oblique;
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+}
+
+.footer {
+  color: rgb(251, 202, 202);
+  font-size: 2rem;
+  position: absolute;
+  bottom: 2rem;
+}
+
+.footer>a {
+  color: rgb(63, 34, 0);
+}

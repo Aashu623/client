@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom'
-import HomePage from './Pages/HomePage';
+import HomePage from './Pages/Homepage';
 import NotFound from './Components/layout/NotFound/NotFound';
 import LoginPage from './Pages/LoginPage';
 import UserDetailsPage from './Pages/UserDetailsPage';
@@ -17,7 +17,7 @@ import LeaderboardPage from './Pages/LeaderboardPage';
 
 function App() {
 
-  // window.addEventListener('contextmenu', (e) => e.preventDefault());
+  window.addEventListener('contextmenu', (e) => e.preventDefault());
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());

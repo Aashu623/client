@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import Loader from "../Components/layout/Loader/Loader";
 import { login } from "../actions/userAction";
+import MetaData from "../Components/layout/MetaData";
+
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,6 +27,7 @@ function LoginPage() {
   });
   return (
     <>
+      <MetaData title="Login | Code Fusion" />
       {loading ? (
         <Loader />
       ) : (

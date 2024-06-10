@@ -3,9 +3,12 @@ import "../styles/userDetailsPage.css";
 import profile from "../images/Profile.png";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Components/layout/Loader/Loader";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { loadQuiz } from "../actions/quizAction";
 import { getAllResults } from "../actions/resultAction";
+import MetaData from "../Components/layout/MetaData";
+import CopyrightIcon from '@mui/icons-material/Copyright';
+
 
 function UserDetailsPage() {
   const navigate = useNavigate();
@@ -30,6 +33,7 @@ function UserDetailsPage() {
   });
   return (
     <>
+      <MetaData title="Dashboard | Code Fusion" />
       {loading ? (
         <Loader />
       ) : (
@@ -62,8 +66,12 @@ function UserDetailsPage() {
               )}
             </div>
           </div>
+          <div className="footer">
+            <CopyrightIcon /> developed by <Link to={"https://aashu623.github.io/Portfolio/"} target="blank">Aashish kushwah</Link>
+          </div>
         </div>
       )}
+
     </>
   );
 }

@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useNavigate } from "react-router-dom";
+import MetaData from "../Components/layout/MetaData";
+
 
 function AllResultsPage() {
   const navigate = useNavigate();
@@ -82,7 +84,8 @@ function AllResultsPage() {
     }
   }, [results, branchFilter, quizTitleFilter, navigate, isAuthenticated]);
 
-  return (
+  return (<>
+    <MetaData title="Result | Code Fusion" />
     <div className="allResultContainer">
       <h1>Results</h1>
       <div className="filters">
@@ -142,6 +145,7 @@ function AllResultsPage() {
         <p>No results available.</p>
       )}
     </div>
+  </>
   );
 }
 

@@ -3,7 +3,10 @@ import "../styles/successPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { clearErrors, getAllResults } from "../actions/resultAction";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import MetaData from "../Components/layout/MetaData";
+import CopyrightIcon from '@mui/icons-material/Copyright';
+
 
 function SuccessPage() {
   const dispatch = useDispatch();
@@ -26,6 +29,8 @@ function SuccessPage() {
   });
   return (
     <>
+      <MetaData title="Score | Code Fusion" />
+
       <div className="container">
         <div className="resultContainer">
           <h2>Your quiz has been submitted successfully</h2>{" "}
@@ -37,6 +42,9 @@ function SuccessPage() {
             <span className={score < 10 ? "red" : "green"}>{score}</span>
           </div>
           <button onClick={handlerLogout}>Leaderboard</button>
+        </div>
+        <div className="footer">
+          <CopyrightIcon /> developed by <Link to={"https://aashu623.github.io/Portfolio/"} target="blank">Aashish kushwah</Link>
         </div>
       </div>
     </>

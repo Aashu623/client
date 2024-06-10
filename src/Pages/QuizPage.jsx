@@ -4,6 +4,8 @@ import Loader from "../Components/layout/Loader/Loader";
 import "../styles/quizPage.css"; // Import CSS file
 import { useNavigate } from "react-router-dom";
 import { submitResult } from "../actions/resultAction";
+import MetaData from "../Components/layout/MetaData";
+
 
 function QuizPage() {
   const navigate = useNavigate();
@@ -72,6 +74,8 @@ function QuizPage() {
 
   return (
     <>
+      <MetaData title="Quiz | Code Fusion" />
+
       <div className="quiz-container">
         <div
           className="timer"
@@ -82,7 +86,7 @@ function QuizPage() {
         <div className="question-container">
           <div className="container-1">
             <div className="question">
-            {currentQuestion.questionNumber}.
+              {currentQuestion.questionNumber}.
               {currentQuestion.text}
             </div>
             <div className="options">
@@ -90,11 +94,10 @@ function QuizPage() {
                 <div key={optionIndex}>
                   <span>{optionIndex + 1}.</span>
                   <button
-                    className={`optionButton ${
-                      selectedOptions[currentQuestion._id] === option
+                    className={`optionButton ${selectedOptions[currentQuestion._id] === option
                         ? "selected"
                         : ""
-                    }`}
+                      }`}
                     onClick={() =>
                       handlerOptionClick(option, currentQuestion._id)
                     }
