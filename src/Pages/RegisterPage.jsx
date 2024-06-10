@@ -107,16 +107,17 @@ function RegisterPage() {
               </select>
             </div>
 
-            <input type="submit" className="button-1" />
+            <input type="submit" className="button-1 register-btn" />
             <span>
               Already registered? <Link to="/login">Login here</Link>{" "}
             </span>
           </form>
+          <div className="footer">
+            <CopyrightIcon /> developed by <Link to={"https://aashu623.github.io/Portfolio/"} target="blank">Aashish kushwah</Link>
+          </div>
         </div>
       )}
-      <div className="footer">
-        <CopyrightIcon /> developed by <Link to={"https://aashu623.github.io/Portfolio/"} target="blank">Aashish kushwah</Link>
-      </div>
+
     </>
   );
 }

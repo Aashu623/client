@@ -13,7 +13,7 @@ function LeaderboardPage() {
   useEffect(() => {
     if (results) {
       const sortedResults = [...results].sort((a, b) => b.score - a.score);
-      setTopResults(sortedResults.slice(0, 10)); // Get top 10 results
+      setTopResults(sortedResults.slice(0, 10));
     }
   }, [results, dispatch]);
 
