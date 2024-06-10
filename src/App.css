@@ -1,24 +1,35 @@
 * {
   margin: 0;
+  font-family: "Arial", sans-serif;
   scroll-behavior: smooth;
-  color: rgb(3, 84, 3);
+  user-select: none;
+  cursor: url("./images/cursor.png"), auto;
 }
 
-body {
-  cursor: url("./images/cursor.png"), auto;
-  background-image: linear-gradient(
-    to right top,
-    #d16ba5,
-    #c777b9,
-    #ba83ca,
-    #aa8fd8,
-    #9a9ae1,
-    #8aa7ec,
-    #79b3f4,
-    #69bff8,
-    #52cffe,
-    #41dfff,
-    #46eefa,
-    #5ffbf1
-  );
+body::before {
+  content: "";
+  color: black;
+  height: 100%;
+  width: 100%;
+  background: url("./images/quiz.jpg") center/cover no-repeat;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.9;
+}
+.button-1 {
+  color: rgb(63, 34, 0);
+  background-color: white;
+}
+.button-1:hover {
+  color: white;
+  background-color: rgb(63, 34, 0);
+}
+
+.button-2 {
+  color: white;
+  background-color: rgb(63, 34, 0);
+}
+.button-2:hover {
+  color: rgb(63, 34, 0);
+  background-color: white;
 }

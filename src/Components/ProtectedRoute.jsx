@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Header from "./layout/Header/Header";
-
+import Profile from "./layout/Profile/Profile";
 function ProtectedRoute({ component }) {
   const navigate = useNavigate();
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -15,7 +14,7 @@ function ProtectedRoute({ component }) {
 
   return (
     <>
-      <Header />
+      <Profile user={user} />
       {component}
     </>
   );

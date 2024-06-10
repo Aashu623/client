@@ -11,7 +11,7 @@ import axios from 'axios';
 
 
 //LOAD QUIZ
-export const loadQuiz = (quizId) => async (dispatch) => {
+export const loadQuiz = (quizId) => async (dispatch, getState) => {
     try {
         dispatch({ type: LOAD_QUIZ_REQUEST });
 
@@ -20,6 +20,8 @@ export const loadQuiz = (quizId) => async (dispatch) => {
         const { data } = await axios.post(`/api/v1/quiz`, { quizId }, config);
 
         dispatch({ type: LOAD_QUIZ_SUCCESS, payload: data.quiz });
+
+        localStorage.setItem('quiz', JSON.stringify(getState().quiz.quiz));
     } catch (error) {
         dispatch({ type: LOAD_QUIZ_FAIL, payload: error.response.data.message });
     }

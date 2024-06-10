@@ -12,7 +12,7 @@ function QuizPage() {
   const { user } = useSelector((state) => state.user);
   const { quiz, loading } = useSelector((state) => state.quiz);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(300);
+  const [timeLeft, setTimeLeft] = useState(600);
   const [resultArray, setResultArray] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
 
@@ -44,63 +44,95 @@ function QuizPage() {
     setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
   };
 
-  const isLastQuestion = currentQuestionIndex === quiz.questions.length - 1;
+  const isLastQuestion =
+    quiz?.questions && currentQuestionIndex === quiz.questions.length - 1;
 
   const handleSubmit = () => {
-    dispatch(submitResult(resultArray, quiz._id, user._id));
+    dispatch(submitResult(resultArray, quiz, user));
     navigate("/result/submit");
   };
 
   useEffect(() => {
-    if (timeLeft > 0) {
+    if (quiz && timeLeft > 0) {
       const timer = setTimeout(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
 
       return () => clearTimeout(timer);
-    } else {
+    } else if (timeLeft === 0) {
       handleSubmit();
     }
-  }); // Add dependency array here
+  }); // Add dependency array here including quiz
 
-  if (loading) {
+  if (loading || !quiz) {
     return <Loader />;
   }
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
 
   return (
-    <div className="quiz-container">
-      <div className="timer" style={{ color: timeLeft < timeLeft / 2 ? "red" : "green" }}>
-        Time Left: {formatTime(timeLeft)}
-      </div>
-      <div className="question-container">
-        <div className="question">{currentQuestion.text}</div>
-        <div className="options">
-          {currentQuestion.options.map((option, optionIndex) => (
-            <div key={optionIndex}>
-              <span>{optionIndex + 1}.</span>
-              <button
-                className={`optionButton ${selectedOptions[currentQuestion._id] === optionIndex ? 'selected' : ''}`}
-                onClick={() => handlerOptionClick(optionIndex, currentQuestion._id)}
-              >
-                {option}
-              </button>
+    <>
+      <div className="quiz-container">
+        <div
+          className="timer"
+          style={{ color: timeLeft < 150 ? "red" : "green" }} // Use a fixed threshold
+        >
+          Time Left {formatTime(timeLeft)}
+        </div>
+        <div className="question-container">
+          <div className="container-1">
+            <div className="question">
+            {currentQuestion.questionNumber}.
+              {currentQuestion.text}
             </div>
-          ))}
+            <div className="options">
+              {currentQuestion.options.map((option, optionIndex) => (
+                <div key={optionIndex}>
+                  <span>{optionIndex + 1}.</span>
+                  <button
+                    className={`optionButton ${
+                      selectedOptions[currentQuestion._id] === option
+                        ? "selected"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handlerOptionClick(option, currentQuestion._id)
+                    }
+                  >
+                    {option}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+          {currentQuestion.code && (
+            <div className="container-2">
+              <pre>
+                <code className="code">{currentQuestion.code}</code>
+              </pre>
+            </div>
+          )}
+        </div>
+        <div className="navigation-buttons">
+          <button
+            className="button-1"
+            onClick={handlePrevQuestion}
+            disabled={currentQuestionIndex === 0}
+          >
+            Previous
+          </button>
+          {isLastQuestion ? (
+            <button className="button-1" onClick={handleSubmit}>
+              Submit
+            </button>
+          ) : (
+            <button className="button-1" onClick={handleNextQuestion}>
+              Next
+            </button>
+          )}
         </div>
       </div>
-      <div className="navigation-buttons">
-        <button onClick={handlePrevQuestion} disabled={currentQuestionIndex === 0}>
-          Previous
-        </button>
-        {isLastQuestion ? (
-          <button onClick={handleSubmit}>Submit</button>
-        ) : (
-          <button onClick={handleNextQuestion}>Next</button>
-        )}
-      </div>
-    </div>
+    </>
   );
 }
 

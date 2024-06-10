@@ -2,11 +2,13 @@ import React from "react";
 import "../styles/homePage.css";
 import MetaData from "../Components/layout/MetaData";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Loader from "../Components/layout/Loader/Loader";
-import { Link } from "react-router-dom";
 
 function HomePage() {
+  const navigate = useNavigate();
   const { loading } = useSelector((state) => state.user);
+
   return (
     <>
       <MetaData title="Home Page" />
@@ -16,9 +18,9 @@ function HomePage() {
         <>
           <div className="banner">
             <h1 className="homeHeading">Welcome to Quiz</h1>
-            <Link to="/login" className="loginButton">
+            <button className="loginButton button-2" onClick={() => navigate("/login")}>
               Login
-            </Link>
+            </button>
           </div>
         </>
       )}

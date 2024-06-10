@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Loader from "../Components/layout/Loader/Loader";
 import { clearErrors, register } from "../actions/userAction";
 
+
 function RegisterPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -105,7 +106,7 @@ function RegisterPage() {
               </select>
             </div>
 
-            <input type="submit" />
+            <input type="submit" className="button-1"/>
             <span>
               Already registered? <Link to="/login">Login here</Link>{" "}
             </span>

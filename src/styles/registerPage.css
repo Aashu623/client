@@ -6,12 +6,12 @@
 }
 
 .registerForm {
-  min-width: 25vw;
+  min-width: 35vw;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  border: 2px solid black;
   border-radius: 10px;
+  box-shadow: 2px 2px 10px black;
   padding: 0.5rem 2rem;
 }
 
@@ -22,26 +22,27 @@
 }
 
 .registerForm > div > label {
+  color: rgb(251, 202, 202);
   font-weight: 600;
 }
 
 .registerForm > div > input,
 select {
-  padding: 0.5rem 1rem;
+  padding: 0.1rem 1rem;
 }
 
 .registerForm > div > input[type="submit"] {
-  background-color: antiquewhite;
-  color: black;
-  border: 1px solid black;
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .registerForm > div > input[type="submit"]:hover {
   background-color: #f0f0f0;
+}
+.registerForm > span {
+  color: rgb(251, 202, 202);
+  font-weight: 600;
 }
 a {
   text-decoration: none;

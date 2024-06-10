@@ -3,14 +3,12 @@ import "../styles/loginPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import Loader from "../Components/layout/Loader/Loader";
-import { clearErrors, login } from "../actions/userAction";
+import { login } from "../actions/userAction";
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, isAuthenticated, error } = useSelector(
-    (state) => state.user
-  );
+  const { loading, isAuthenticated } = useSelector((state) => state.user);
 
   const [enrollment, setEnrollment] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -23,10 +21,6 @@ function LoginPage() {
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/me");
-    }
-    if (error) {
-      alert(error);
-      dispatch(clearErrors());
     }
   });
   return (
@@ -56,7 +50,7 @@ function LoginPage() {
                 onChange={(e) => setLoginPassword(e.target.value)}
               />
             </div>
-            <button>Login</button>
+            <button className="button-1">Login</button>
             <span>
               Not registered? <Link to="/register">Register here</Link>
             </span>
