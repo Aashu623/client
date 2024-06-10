@@ -16,10 +16,17 @@ function UserDetailsPage() {
 
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
   const [quizId, setQuizId] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const submitHandler = () => {
-    dispatch(loadQuiz(quizId));
-    navigate("/quiz");
+    const parsedQuizId = parseInt(quizId, 10);
+    if (isNaN(parsedQuizId)) {
+      setErrorMessage("Quiz ID must be a number");
+    } else {
+      setErrorMessage("");
+      dispatch(loadQuiz(parsedQuizId));
+      navigate("/quiz");
+    }
   };
 
   const getResultHandler = () => {
@@ -30,7 +37,11 @@ function UserDetailsPage() {
     if (!isAuthenticated) {
       navigate("/login");
     }
-  });
+    if (errorMessage) {
+      alert(errorMessage)
+      setErrorMessage("")
+    }
+  },[setErrorMessage,isAuthenticated,errorMessage,navigate]);
   return (
     <>
       <MetaData title="Dashboard | Code Fusion" />

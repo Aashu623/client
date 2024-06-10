@@ -3,7 +3,7 @@ import "../styles/registerPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import Loader from "../Components/layout/Loader/Loader";
-import {register } from "../actions/userAction";
+import { register } from "../actions/userAction";
 import MetaData from "../Components/layout/MetaData";
 import CopyrightIcon from '@mui/icons-material/Copyright';
 
@@ -103,7 +103,7 @@ function RegisterPage() {
                 <option value="BCA AIDA B">BCA AIDA B</option>
                 <option value="BCA AIDA C">BCA AIDA C</option>
                 <option value="BCA AIDA D">BCA AIDA D</option>
-                <option value="BCA AIDA D">MCA</option>
+                <option value="MCA">MCA</option>
               </select>
             </div>
 
