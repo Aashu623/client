@@ -7,15 +7,14 @@ import { useNavigate, Link } from "react-router-dom";
 import { loadQuiz } from "../actions/quizAction";
 import { getAllResults } from "../actions/resultAction";
 import MetaData from "../Components/layout/MetaData";
-import CopyrightIcon from '@mui/icons-material/Copyright';
-
+import CopyrightIcon from "@mui/icons-material/Copyright";
 
 function UserDetailsPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
-  const [quizId, setQuizId] = useState("");
+  const [quizId, setQuizId] = useState(808088);
   const [errorMessage, setErrorMessage] = useState("");
 
   const submitHandler = () => {
@@ -38,10 +37,10 @@ function UserDetailsPage() {
       navigate("/login");
     }
     if (errorMessage) {
-      alert(errorMessage)
-      setErrorMessage("")
+      alert(errorMessage);
+      setErrorMessage("");
     }
-  },[setErrorMessage,isAuthenticated,errorMessage,navigate]);
+  }, [setErrorMessage, isAuthenticated, errorMessage, navigate]);
   return (
     <>
       <MetaData title="Dashboard | Code Fusion" />
@@ -72,17 +71,21 @@ function UserDetailsPage() {
                     value={quizId}
                     onChange={(e) => setQuizId(e.target.value)}
                   />
-                  <button className="button-1" onClick={submitHandler}>Start quiz</button>
+                  <button className="button-1" onClick={submitHandler}>
+                    Start quiz
+                  </button>
                 </>
               )}
             </div>
           </div>
           <div className="footer">
-            <CopyrightIcon /> developed by <Link to={"https://aashu623.github.io/Portfolio/"} target="blank">Aashish kushwah</Link>
+            <CopyrightIcon /> developed by{" "}
+            <Link to={"https://aashu623.github.io/Portfolio/"} target="blank">
+              Aashish kushwah
+            </Link>
           </div>
         </div>
       )}
-
     </>
   );
 }
