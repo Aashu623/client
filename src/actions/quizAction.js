@@ -13,7 +13,7 @@ export const loadQuiz = (quizId) => async (dispatch, getState) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.post(`/https://quiz-app-ogrw.onrender.com/api/v1/quiz`, { quizId }, config);
+        const { data } = await axios.post(`https://quiz-app-ogrw.onrender.com/api/v1/quiz`, { quizId }, config);
 
         dispatch({ type: LOAD_QUIZ_SUCCESS, payload: data.quiz });
 

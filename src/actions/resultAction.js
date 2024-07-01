@@ -19,7 +19,7 @@ export const submitResult = (resultArray, quiz, user) => async (dispatch) => {
         const config = { headers: { "Content-Type": "application/json" } };
 
         const { data } = await axios.post(
-            `/https://quiz-app-ogrw.onrender.com/api/v1/result/submit`,
+            `https://quiz-app-ogrw.onrender.com/api/v1/result/submit`,
             { resultArray, quiz, user },
             config
         );
@@ -34,7 +34,7 @@ export const getAllResults = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_RESULT_REQUEST });
 
-        const { data } = await axios.get(`/https://quiz-app-ogrw.onrender.com/api/v1/results`,);
+        const { data } = await axios.get(`https://quiz-app-ogrw.onrender.com/api/v1/results`,);
 
         console.log(data)
         dispatch({ type: ALL_RESULT_SUCCESS, payload: data.results });
