@@ -8,6 +8,7 @@
 .loginForm {
   width: 25vw;
   min-height: 50vh;
+  min-width: 350px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
