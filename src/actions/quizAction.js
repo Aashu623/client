@@ -13,7 +13,7 @@ export const loadQuiz = (quizId) => async (dispatch, getState) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.post(`/api/v1/quiz`, { quizId }, config);
+        const { data } = await axios.post(`/https://quiz-app-ogrw.onrender.com/api/v1/quiz`, { quizId }, config);
 
         dispatch({ type: LOAD_QUIZ_SUCCESS, payload: data.quiz });
 
@@ -28,7 +28,7 @@ export const loadQuiz = (quizId) => async (dispatch, getState) => {
 // export const logout = () => async (dispatch) => {
 //     try {
 
-//         await axios.get(`/api/v1/logout`);
+//         await axios.get(`/https://quiz-app-ogrw.onrender.com/api/v1/logout`);
 
 //         dispatch({ type: LOGOUT_SUCCESS });
 //     } catch (error) {
@@ -42,7 +42,7 @@ export const loadQuiz = (quizId) => async (dispatch, getState) => {
 //     try {
 //         dispatch({ type: ALL_USER_REQUEST });
 
-//         const { data } = await axios.get(`/api/v1/admin/users`);
+//         const { data } = await axios.get(`/https://quiz-app-ogrw.onrender.com/api/v1/admin/users`);
 
 //         dispatch({ type: ALL_USER_SUCCESS, payload: data.users });
 //     } catch (error) {
@@ -58,7 +58,7 @@ export const loadQuiz = (quizId) => async (dispatch, getState) => {
 //         dispatch({ type: DELETE_USER_REQUEST });
 
 //         const { data } = await axios.delete(
-//             `/api/v1/admin/user/${id}`
+//             `/https://quiz-app-ogrw.onrender.com/api/v1/admin/user/${id}`
 //         );
 
 //         dispatch({ type: DELETE_USER_SUCCESS, payload: data });
